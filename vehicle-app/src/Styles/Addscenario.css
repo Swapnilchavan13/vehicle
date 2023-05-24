@@ -3,3 +3,34 @@
     color: white;
     padding-left: 50px;
 }
+input{
+    margin-top: -100px;
+    border-radius: 6px;
+    height: 30px;
+    border: 2px solid gray;
+    padding: 10px;
+    width: 250px;
+    background-color: rgb(17, 17, 17);
+}
+.middlediv{
+    display: flex;
+    gap: 60%;
+}
+.middlediv{
+    background-color: rgb(49, 47, 47);
+    padding: 20px 400px 70px 40px;
+    width: 50%;
+    height: fit-content;
+    border-radius: 10px;
+}
+.threebuttons{
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+}
+button{
+    color: white;
+    background-color: green;
+    border-radius: 5px;
+    padding: 10px 30px 10px 30px;
+}
