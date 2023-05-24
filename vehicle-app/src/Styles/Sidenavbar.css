@@ -1,0 +1,11 @@
+.maindiv{
+    background-color: rgb(189, 186, 186);
+    padding: 80px 100px 100px 30px;
+    text-align: left;
+    height: 600px;
+}
+.maindiv h2:hover{
+    color: rgb(27, 95, 95);
+    background-color: rgb(221, 217, 217);
+    cursor: pointer;
+}
