@@ -1,9 +1,11 @@
 .App {
-  text-align: center;
   display: flex;
-  gap: 30px;
 }
-
+.secondmaindiv{
+  width: 100%;
+  color: white;
+  background-color: black;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
