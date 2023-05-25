@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "../Styles/Addscenario.css";
 
 export const AddScenario = () => {
-  const [formData, setFormData] = useState({
-    id:new Date(),
+  const initialFormData = {
+    id: new Date(),
     name: '',
     time: '',
     vehicles: 0
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleAddScenario = () => {
+    if (formData.name.trim() === '' || formData.time.trim() === '' || formData.vehicles === '') {
+      alert('Fields are required');
+      return;
+    }
+
     fetch('http://localhost:8080/scenarios', {
       method: 'POST',
       headers: {
@@ -27,11 +35,15 @@ export const AddScenario = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Scenario added successfully:', data);
+        alert('Scenario added successfully:', data);
       })
       .catch(error => {
         console.error('Error adding scenario:', error);
       });
+  };
+
+  const handleReset = () => {
+    setFormData(initialFormData);
   };
 
   return (
@@ -42,7 +54,6 @@ export const AddScenario = () => {
         <div>
           <h4>Scenario Name</h4>
           <input
-            required
             type="text"
             placeholder='Test Scenario'
             name="name"
@@ -63,12 +74,13 @@ export const AddScenario = () => {
           />
           <p className='popup'>Scenario is required</p>
         </div>
-       
       </div>
       <div className='threebuttons'>
         <button onClick={handleAddScenario}>Add</button>
-        <button>Reset</button>
-        <button>Go Back</button>
+        <button onClick={handleReset}>Reset</button>
+        <Link to={"/"}>
+          <button id='tbutton'>Go Back</button>
+        </Link>
       </div>
     </div>
   );

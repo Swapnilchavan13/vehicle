@@ -40,7 +40,7 @@ button{
     background-color: #de9714;
     border: 1px solid #de9714;
 }
-.threebuttons button:nth-child(3){
+#tbutton{
     background-color: #47869e;
     border: 1px solid #62afce;
 }
