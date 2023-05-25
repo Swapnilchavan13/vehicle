@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/Allscenarios.css";
 import { Link } from "react-router-dom";
+import { BsFillPlusCircleFill } from "react-icons/bs";
+import { MdEdit } from "react-icons/md";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 const EditScenarioForm = ({ scenario, onSave, onCancel }) => {
   const [name, setName] = useState(scenario.name);
@@ -13,8 +16,16 @@ const EditScenarioForm = ({ scenario, onSave, onCancel }) => {
   return (
     <div className="edit-dialog">
       <div className="edit-dialog-content">
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <input type="text" value={time} onChange={(e) => setTime(e.target.value)} />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+        />
         <button onClick={handleSave}>Save</button>
         <button onClick={onCancel}>Cancel</button>
       </div>
@@ -35,21 +46,21 @@ export const AllScenarios = () => {
 
   const handleAddVehicle = (id) => {
     const scenarioIndex = scenarios.findIndex((scenario) => scenario.id === id);
-  
+
     if (scenarioIndex !== -1) {
       const updatedScenario = { ...scenarios[scenarioIndex] };
       updatedScenario.vehicles++;
-  
+
       const updatedScenarios = [...scenarios];
       updatedScenarios[scenarioIndex] = updatedScenario;
-  
+
       setScenarios(updatedScenarios);
-  
+
       const url = `http://localhost:8080/scenarios/${updatedScenario.id}`;
       fetch(url, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedScenario),
       });
@@ -73,103 +84,114 @@ export const AllScenarios = () => {
     });
     setScenarios(updatedScenarios);
     setEditingScenarioId(null);
-  
+
     const url = `http://localhost:8080/scenarios/${updatedScenario.id}`;
     fetch(url, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedScenario),
     });
   };
 
   const handleDelete = (scenarioId) => {
-    const updatedScenarios = scenarios.filter((scenario) => scenario.id !== scenarioId);
+    const updatedScenarios = scenarios.filter(
+      (scenario) => scenario.id !== scenarioId
+    );
     setScenarios(updatedScenarios);
-  
+
     const url = `http://localhost:8080/scenarios/${scenarioId}`;
     fetch(url, {
-      method: 'DELETE',
+      method: "DELETE",
     });
   };
 
-
   const handleDeleteAll = () => {
     setScenarios([]);
-  
-    const url = 'http://localhost:8080/scenarios';
+
+    const url = "http://localhost:8080/scenarios";
     fetch(url, {
-      method: 'DELETE',
+      method: "DELETE",
     })
       .then((response) => {
         if (response.ok) {
-          console.log('All scenarios deleted successfully.');
+          console.log("All scenarios deleted successfully.");
         } else {
-          console.error('Failed to delete all scenarios.');
+          console.error("Failed to delete all scenarios.");
         }
       })
       .catch((error) => {
-        console.error('Network error occurred.', error);
+        console.error("Network error occurred.", error);
       });
   };
-    return (
-      <>
-        <div className="scenariomaindiv">
-          <h2>All Scenarios</h2>
-          <div className="buttondiv">
-            <Link to="/addscenario">
-              <button>New Scenario</button>
-            </Link>
-            <Link to="/addvehicle">
-              <button id="sbtn">Add Vehicle</button>
-            </Link>
-            <button id="tbtn" onClick={handleDeleteAll}>Delete All</button>
-          </div>
+  return (
+    <>
+      <div className="scenariomaindiv">
+        <h2>All Scenarios</h2>
+        <div className="buttondiv">
+          <Link to="/addscenario">
+            <button>New Scenario</button>
+          </Link>
+          <Link to="/addvehicle">
+            <button id="sbtn">Add Vehicle</button>
+          </Link>
+          <button id="tbtn" onClick={handleDeleteAll}>
+            Delete All
+          </button>
         </div>
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>Scenario ID</th>
-                <th>Scenario Name</th>
-                <th>Scenario Time</th>
-                <th>No. of Vehicles</th>
-                <th>Add Vehicle</th>
-                <th>Edit</th>
-                <th>Delete</th>
+      </div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Scenario ID</th>
+              <th>Scenario Name</th>
+              <th>Scenario Time</th>
+              <th>Number of Vehicles</th>
+              <th>Add Vehicle</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {scenarios.map((scenario) => (
+              <tr key={scenario.id}>
+                <td>{scenario.id}</td>
+                <td>{scenario.name}</td>
+                <td>{scenario.time}s</td>
+                <td>{scenario.vehicles}</td>
+                <td>
+                  <BsFillPlusCircleFill
+                    fontSize={"22px"}
+                    onClick={() => handleAddVehicle(scenario.id)}
+                  />
+                </td>
+                <td>
+                  {editingScenarioId === scenario.id ? (
+                    <EditScenarioForm
+                      scenario={scenario}
+                      onSave={handleSaveEdit}
+                      onCancel={handleCancelEdit}
+                    />
+                  ) : (
+                    <MdEdit
+                      fontSize={"25px"}
+                      onClick={() => handleEditScenario(scenario.id)}
+                    />
+                  )}
+                </td>
+                <td>
+                  <RiDeleteBin5Fill
+                    fontSize={"25px"}
+                    onClick={() => handleDelete(scenario.id)}
+                  />
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {scenarios.map((scenario) => (
-                <tr key={scenario.id}>
-                  <td>{scenario.id}</td>
-                  <td>{scenario.name}</td>
-                  <td>{scenario.time}</td>
-                  <td>{scenario.vehicles}</td>
-                  <td>
-                    <button onClick={() => handleAddVehicle(scenario.id)}>+</button>
-                  </td>
-                  <td>
-                    {editingScenarioId === scenario.id ? (
-                      <EditScenarioForm
-                        scenario={scenario}
-                        onSave={handleSaveEdit}
-                        onCancel={handleCancelEdit}
-                      />
-                    ) : (
-                      <button onClick={() => handleEditScenario(scenario.id)}>Edit</button>
-                    )}
-                  </td>
-                  <td>
-                    <button onClick={() => handleDelete(scenario.id)}>Delete</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </>
-    );
-  };
-  
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+};
