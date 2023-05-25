@@ -14,7 +14,8 @@ export const AddScenario = () => {
         </div>
         <div>
             <h5>Scenario Time (seconds)</h5>
-            <input type="text" placeholder='10'/>
+            <input type="Number" className="required-field" placeholder='10' required/>
+            <p className='popup'>Scenario is Required</p>
         </div>
         </div>
         
