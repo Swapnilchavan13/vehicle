@@ -1,6 +1,6 @@
 .maindiv{
     background-color: rgb(189, 186, 186);
-    width: 30%;
+    width: 340px;
     height: 600px;
 }
 h2{
@@ -12,3 +12,8 @@ h2{
     background-color: rgb(221, 217, 217);
     cursor: pointer;
 }
+a{
+    text-decoration: none;
+    color: rgb(24, 24, 24);
+}
+

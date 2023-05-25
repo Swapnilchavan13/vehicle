@@ -1,0 +1,86 @@
+.scenariomaindiv {
+  display: flex;
+  gap: 450px;
+}
+.buttondiv {
+  padding-top: 30px;
+  text-align: center;
+  display: flex;
+  gap: 20px;
+}
+button {
+  height: fit-content;
+  border-radius: 6px;
+}
+
+.buttondiv button:nth-child(1) {
+  background-color: #50b5dd;
+  border: 1px solid #50b5dd;
+}
+#sbtn{
+  background-color: #3ebd3e;
+  border: 1px solid #3ebd3e;
+}
+#tbtn{
+    background-color: #de9714;
+    border: 1px solid #de9714;
+}
+
+
+/* Edit popup */
+
+
+.edit-form {
+    width: 500px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #50b5dd;
+  }
+  
+  .edit-form input {
+    width: 80%;
+    margin: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .edit-form button {
+    margin: 10px;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .edit-form button:hover {
+    background-color: green;
+  }
+
+
+  /* table */
+
+
+  table {
+    border-collapse: collapse;
+    margin: auto;
+    width: 94%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  th {
+    background-color: #3b3a3a;
+   padding: 20px 0px 20px 0px;
+  }
+  td{
+    border-bottom: 2px solid black;
+    background-color: #ccc;
+    color: black;
+    padding: 8px
+  }
+  
+ 
+  
+ 

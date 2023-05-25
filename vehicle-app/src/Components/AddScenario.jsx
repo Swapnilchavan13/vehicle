@@ -9,13 +9,13 @@ export const AddScenario = () => {
         <h2>Add Scenario</h2>
         <div className='middlediv'>
         <div>
-            <h5>Scenario Name</h5>
+            <h4>Scenario Name</h4>
             <input type="text" placeholder='Test Scenario'/>
         </div>
         <div>
-            <h5>Scenario Time (seconds)</h5>
+            <h4>Scenario Time (seconds)</h4>
             <input type="Number" className="required-field" placeholder='10' required/>
-            <p className='popup'>Scenario is Required</p>
+            <p className='popup'>Scenario is required</p>
         </div>
         </div>
         
