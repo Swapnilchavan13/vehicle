@@ -1,0 +1,30 @@
+.custom-component{
+    
+    width: 90%;
+    background-color: black;
+    margin: auto;
+}
+
+.row {
+    background-color: #1d1f1f;
+    padding: 0px 10px 20px 60px;
+    display: flex;
+    gap: 120px;
+    
+  }
+   input{
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  select{
+    margin-top: -10px;
+    height: 40px;
+    width: 210px;
+    background-color:#1d1f1f ;
+    color: white;
+  }
+  select option {
+    padding: 45px; /* Add desired padding for the option tags */
+  }
+  
