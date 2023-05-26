@@ -1,21 +1,35 @@
+.vehiclemain{
+margin-left: 35px;
+}
+.vehiclemain h4{
+  padding-left: 20px;
+}
 .custom-component{
-    
     width: 90%;
     background-color: black;
     margin: auto;
 }
 
-.row {
+.row, .row2 {
     background-color: #1d1f1f;
     padding: 0px 10px 20px 60px;
     display: flex;
-    gap: 120px;
-    
+    column-gap: 120px;
+    border-radius: 5px;
+  }
+  .row2{
+    height: 130px;
   }
    input{
-    width: 200px;
-    padding: 5px;
+    margin-top: -8px;
+    width: 190px;
+    color: wheat;
+    padding: 10px;
     margin-bottom: 5px;
+    background-color: #1d1f1f;
+    border: 2px solid gray;
+    border-radius: 5px;
+    
   }
   select{
     margin-top: -10px;
@@ -23,8 +37,25 @@
     width: 210px;
     background-color:#1d1f1f ;
     color: white;
+    border-radius: 5px;
+    border: 2px solid gray;
   }
   select option {
-    padding: 45px; /* Add desired padding for the option tags */
+    background-color: rgb(33, 34, 34);
+  }
+   .popup {
+    display: none;
+    color: white;
+    background-color: brown;
+    font-size: 10px;
+    margin: auto;
+    width: fit-content;
+    border-radius: 10px;
   }
   
+  .required-field:hover + .popup {
+    display: block;
+  }
+  .required-field:hover {
+    border: 2px solid red;
+  }
