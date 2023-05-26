@@ -82,6 +82,12 @@ export const HomePage = () => {
   return (
     <div>
       <div className="container">
+        <h4>Scenario</h4>
+        <select name="" id="">
+          <option value="">option1</option>
+          <option value="">option1</option>
+          <option value="">option1</option>
+        </select>
         <table className="rounded-table">
           <thead>
             <tr>

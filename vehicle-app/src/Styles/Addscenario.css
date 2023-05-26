@@ -1,7 +1,15 @@
+#maindiv{
+  padding-left: 20px;
+}
+
 .addmaindiv{
     background-color: black;
     color: white;
     margin-left: 30px;
+    padding-left: 30px;
+}
+.addmaindiv h2{
+  margin-left: -15px;
 }
 .middlediv div input{
     margin-top: -100px;
@@ -18,7 +26,7 @@
     gap: 40%;
     background-color: rgb(49, 47, 47);
     padding: 20px 400px 70px 40px;
-    width: 50%;
+    width: 500px;
     height: 100px;
     border-radius: 10px;
 }

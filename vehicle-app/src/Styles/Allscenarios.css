@@ -1,8 +1,10 @@
 .scenariomaindiv {
     display: flex;
-    gap: 450px;
+    gap: 400px;
 }
-
+.scenariomaindiv h2{
+    margin-left: 20px;
+}
 .buttondiv {
     padding-top: 30px;
     text-align: center;
@@ -69,7 +71,7 @@ button {
 table {
     border-collapse: collapse;
     margin: auto;
-    width: 94%;
+    width: 93%;
     text-align: center;
     margin-top: 10px;
 }

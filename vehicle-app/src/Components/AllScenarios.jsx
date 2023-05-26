@@ -127,6 +127,8 @@ export const AllScenarios = () => {
   };
   return (
     <>
+      <div id="maindiv">
+
       <div className="scenariomaindiv">
         <h2>All Scenarios</h2>
         <div className="buttondiv">
@@ -191,6 +193,8 @@ export const AllScenarios = () => {
             ))}
           </tbody>
         </table>
+      </div>
+
       </div>
     </>
   );
