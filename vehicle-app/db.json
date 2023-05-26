@@ -51,10 +51,10 @@
       "id": 6
     },
     {
-      "vehicleName": "bye",
+      "vehicleName": "i am here",
       "speed": "7",
-      "positionX": "600",
-      "positionY": "38",
+      "positionX": 60,
+      "positionY": 39,
       "direction": "Backward",
       "id": 7
     }

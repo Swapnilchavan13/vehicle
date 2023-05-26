@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { MdEdit } from "react-icons/md";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 import '../Styles/home.css';
 
 export const HomePage = () => {
@@ -103,10 +105,16 @@ export const HomePage = () => {
                 <td>{vehicle.speed}</td>
                 <td>{vehicle.direction}</td>
                 <td>
-                  <button onClick={() => handleEdit(vehicle)}>Edit</button>
+                   <MdEdit
+                      fontSize={"25px"}
+                      onClick={() => handleEdit(vehicle)}
+                    />
                 </td>
                 <td>
-                  <button onClick={() => handleDelete(vehicle.id)}>Delete</button>
+                  <RiDeleteBin5Fill
+                    fontSize={"25px"}
+                    onClick={() => handleDelete(vehicle.id)}
+                  />
                 </td>
               </tr>
             ))}
