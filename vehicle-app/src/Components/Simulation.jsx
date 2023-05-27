@@ -1,40 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "../Styles/simulation.css";
-
-const Container = {
-  backgroundColor: 'black',
-  width: '962px',
-  height: '302px',
-  border: '1px solid black',
-  position: 'relative',
-  overflow: 'hidden',
-  backgroundSize: '68.5px 50px',
-  backgroundImage: `
-    linear-gradient(to right, green 1px, transparent 1px),
-    linear-gradient(to bottom, green 1px, transparent 1px)
-  `,
-};
-
-const Vehicle = {
-  width: '20px',
-  height: '20px',
-  borderRadius: '50%',
-  textAlign: 'center',
-  backgroundColor: 'blue',
-  position: 'absolute',
-};
 
 const Simulation = () => {
   const [vehicles, setVehicles] = useState([]);
+  const [initialVehicles, setInitialVehicles] = useState([]);
   const containerWidth = 962;
   const containerHeight = 302;
   const [simulationRunning, setSimulationRunning] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:8080/vehicle')
-      .then(response => response.json())
-      .then(data => {
-        const formattedVehicles = data.map(vehicle => ({
+    fetch("http://localhost:8080/vehicle")
+      .then((response) => response.json())
+      .then((data) => {
+        const formattedVehicles = data.map((vehicle) => ({
           id: vehicle.id,
           x: parseInt(vehicle.positionX),
           y: parseInt(vehicle.positionY),
@@ -42,9 +20,10 @@ const Simulation = () => {
           speed: parseInt(vehicle.speed),
         }));
         setVehicles(formattedVehicles);
+        setInitialVehicles(formattedVehicles);
       })
-      .catch(error => {
-        console.error('Error fetching vehicle data:', error);
+      .catch((error) => {
+        console.error("Error fetching vehicle data:", error);
       });
   }, []);
 
@@ -56,24 +35,29 @@ const Simulation = () => {
     setSimulationRunning(false);
   };
 
+  const resetSimulation = () => {
+    setVehicles(initialVehicles);
+    setSimulationRunning(false);
+  };
+
   useEffect(() => {
     if (simulationRunning) {
       const updateVehicles = () => {
-        setVehicles(prevVehicles => {
-          const updatedVehicles = prevVehicles.map(vehicle => {
+        setVehicles((prevVehicles) => {
+          const updatedVehicles = prevVehicles.map((vehicle) => {
             let { x, y, direction, speed } = vehicle;
 
             switch (direction) {
-              case 'toward':
+              case "toward":
                 x += speed;
                 break;
-              case 'upward':
+              case "upward":
                 y -= speed;
                 break;
-              case 'downward':
+              case "downward":
                 y += speed;
                 break;
-              case 'backward':
+              case "backward":
                 x -= speed;
                 break;
               default:
@@ -97,28 +81,44 @@ const Simulation = () => {
     }
   }, [simulationRunning, containerWidth, containerHeight]);
 
+  const getVehicleColor = (direction) => {
+    switch (direction) {
+      case "toward":
+        return "blue";
+      case "upward":
+        return "green";
+      case "downward":
+        return "red";
+      case "backward":
+        return "yellow";
+      default:
+        return "blue";
+    }
+  };
+
   return (
     <div>
-         <div id='sbuttons'>
+      <div id="sbuttons">
         <button onClick={startSimulation}>Start Simulation</button>
         <button onClick={stopSimulation}>Stop Simulation</button>
+        <button onClick={resetSimulation}>Reset</button>
       </div>
-      <div style={Container}>
-        {vehicles.map(vehicle => (
+      <div id="container">
+        {vehicles.map((vehicle) => (
           <div
             key={vehicle.id}
+            className="vehicle"
             style={{
-              ...Vehicle,
               left: vehicle.x,
               top: vehicle.y,
-              display: vehicle.hidden ? 'none' : 'block',
+              display: vehicle.hidden ? "none" : "block",
+              backgroundColor: getVehicleColor(vehicle.direction),
             }}
           >
             {vehicle.id}
           </div>
         ))}
       </div>
-     
     </div>
   );
 };

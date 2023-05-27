@@ -128,73 +128,71 @@ export const AllScenarios = () => {
   return (
     <>
       <div id="maindiv">
-
-      <div className="scenariomaindiv">
-        <h2>All Scenarios</h2>
-        <div className="buttondiv">
-          <Link to="/addscenario">
-            <button>New Scenario</button>
-          </Link>
-          <Link to="/addvehicle">
-            <button id="sbtn">Add Vehicle</button>
-          </Link>
-          <button id="tbtn" onClick={handleDeleteAll}>
-            Delete All
-          </button>
+        <div className="scenariomaindiv">
+          <h2>All Scenarios</h2>
+          <div className="buttondiv">
+            <Link to="/addscenario">
+              <button>New Scenario</button>
+            </Link>
+            <Link to="/addvehicle">
+              <button id="sbtn">Add Vehicle</button>
+            </Link>
+            <button id="tbtn" onClick={handleDeleteAll}>
+              Delete All
+            </button>
+          </div>
         </div>
-      </div>
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Scenario ID</th>
-              <th>Scenario Name</th>
-              <th>Scenario Time</th>
-              <th>Number of Vehicles</th>
-              <th>Add Vehicle</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {scenarios.map((scenario) => (
-              <tr key={scenario.id}>
-                <td>{scenario.id}</td>
-                <td>{scenario.name}</td>
-                <td>{scenario.time}s</td>
-                <td>{scenario.vehicles}</td>
-                <td>
-                  <BsFillPlusCircleFill
-                    fontSize={"22px"}
-                    onClick={() => handleAddVehicle(scenario.id)}
-                  />
-                </td>
-                <td>
-                  {editingScenarioId === scenario.id ? (
-                    <EditScenarioForm
-                      scenario={scenario}
-                      onSave={handleSaveEdit}
-                      onCancel={handleCancelEdit}
-                    />
-                  ) : (
-                    <MdEdit
-                      fontSize={"25px"}
-                      onClick={() => handleEditScenario(scenario.id)}
-                    />
-                  )}
-                </td>
-                <td>
-                  <RiDeleteBin5Fill
-                    fontSize={"25px"}
-                    onClick={() => handleDelete(scenario.id)}
-                  />
-                </td>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>Scenario ID</th>
+                <th>Scenario Name</th>
+                <th>Scenario Time</th>
+                <th>Number of Vehicles</th>
+                <th>Add Vehicle</th>
+                <th>Edit</th>
+                <th>Delete</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
+            </thead>
+            <tbody>
+              {scenarios.map((scenario) => (
+                <tr key={scenario.id}>
+                  <td>{scenario.id}</td>
+                  <td>{scenario.name}</td>
+                  <td>{scenario.time}s</td>
+                  <td>{scenario.vehicles}</td>
+                  <td>
+                    <BsFillPlusCircleFill
+                      fontSize={"22px"}
+                      onClick={() => handleAddVehicle(scenario.id)}
+                    />
+                  </td>
+                  <td>
+                    {editingScenarioId === scenario.id ? (
+                      <EditScenarioForm
+                        scenario={scenario}
+                        onSave={handleSaveEdit}
+                        onCancel={handleCancelEdit}
+                      />
+                    ) : (
+                      <MdEdit
+                        fontSize={"25px"}
+                        onClick={() => handleEditScenario(scenario.id)}
+                      />
+                    )}
+                  </td>
+                  <td>
+                    <RiDeleteBin5Fill
+                      fontSize={"25px"}
+                      onClick={() => handleDelete(scenario.id)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );

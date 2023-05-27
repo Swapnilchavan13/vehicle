@@ -21,14 +21,6 @@
   ],
   "vehicle": [
     {
-      "vehicleName": "misho",
-      "speed": "5",
-      "positionX": 500,
-      "positionY": 100,
-      "direction": "Upward",
-      "id": 1
-    },
-    {
       "vehicleName": "target",
       "speed": "9",
       "positionX": 0,
@@ -43,14 +35,6 @@
       "positionY": 30,
       "direction": "Toward",
       "id": 4
-    },
-    {
-      "vehicleName": "naon",
-      "speed": "1",
-      "positionX": 500,
-      "positionY": 280,
-      "direction": "Backward",
-      "id": 5
     },
     {
       "vehicleName": "again",

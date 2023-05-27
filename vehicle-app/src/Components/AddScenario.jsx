@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../Styles/Addscenario.css";
 
 export const AddScenario = () => {
   const initialFormData = {
     id: new Date(),
-    name: '',
-    time: '',
-    vehicles: 0
+    name: "",
+    time: "",
+    vehicles: 0,
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -17,28 +17,32 @@ export const AddScenario = () => {
   };
 
   const handleAddScenario = () => {
-    if (formData.name.trim() === '' || formData.time.trim() === '' || formData.vehicles === '') {
-      alert('Fields are required');
+    if (
+      formData.name.trim() === "" ||
+      formData.time.trim() === "" ||
+      formData.vehicles === ""
+    ) {
+      alert("Fields are required");
       return;
     }
 
-    fetch('http://localhost:8080/scenarios', {
-      method: 'POST',
+    fetch("http://localhost:8080/scenarios", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: formData.name,
         time: formData.time,
-        vehicles: parseInt(formData.vehicles)
-      })
+        vehicles: parseInt(formData.vehicles),
+      }),
     })
-      .then(response => response.json())
-      .then(data => {
-        alert('Scenario added successfully:', data);
+      .then((response) => response.json())
+      .then((data) => {
+        alert("Scenario added successfully:", data);
       })
-      .catch(error => {
-        console.error('Error adding scenario:', error);
+      .catch((error) => {
+        console.error("Error adding scenario:", error);
       });
   };
 
@@ -47,15 +51,15 @@ export const AddScenario = () => {
   };
 
   return (
-    <div className='addmaindiv'>
+    <div className="addmaindiv">
       <h4>Scenario/add</h4>
       <h2>Add Scenario</h2>
-      <div className='middlediv'>
+      <div className="middlediv">
         <div>
           <h4>Scenario Name</h4>
           <input
             type="text"
-            placeholder='Test Scenario'
+            placeholder="Test Scenario"
             name="name"
             value={formData.name}
             onChange={handleInputChange}
@@ -66,20 +70,20 @@ export const AddScenario = () => {
           <input
             type="Number"
             className="required-field"
-            placeholder='10'
+            placeholder="10"
             required
             name="time"
             value={formData.time}
             onChange={handleInputChange}
           />
-          <p className='popup'>Scenario is required</p>
+          <p className="popup">Scenario is required</p>
         </div>
       </div>
-      <div className='threebuttons'>
+      <div className="threebuttons">
         <button onClick={handleAddScenario}>Add</button>
         <button onClick={handleReset}>Reset</button>
         <Link to={"/"}>
-          <button id='tbutton'>Go Back</button>
+          <button id="tbutton">Go Back</button>
         </Link>
       </div>
     </div>

@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { MdEdit } from "react-icons/md";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import '../Styles/home.css';
-import Simulation from './Simulation';
+import "../Styles/home.css";
+import Simulation from "./Simulation";
 
 export const HomePage = () => {
   const [vehicles, setVehicles] = useState([]);
   const [editVehicle, setEditVehicle] = useState(null);
-  const [editName, setEditName] = useState('');
+  const [editName, setEditName] = useState("");
   const [editPositionX, setEditPositionX] = useState(0);
   const [editPositionY, setEditPositionY] = useState(0);
   const [scenarios, setScenarios] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/scenarios')
-      .then(response => response.json())
-      .then(data => {
+    fetch("http://localhost:8080/scenarios")
+      .then((response) => response.json())
+      .then((data) => {
         setScenarios(data);
       })
-      .catch(error => {
-        console.error('Error fetching scenarios:', error);
+      .catch((error) => {
+        console.error("Error fetching scenarios:", error);
       });
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:8080/vehicle')
-      .then(response => response.json())
-      .then(data => {
+    fetch("http://localhost:8080/vehicle")
+      .then((response) => response.json())
+      .then((data) => {
         setVehicles(data);
       })
-      .catch(error => {
-        console.error('Error fetching vehicle data:', error);
+      .catch((error) => {
+        console.error("Error fetching vehicle data:", error);
       });
   }, []);
 
@@ -51,15 +51,15 @@ export const HomePage = () => {
       };
 
       fetch(`http://localhost:8080/vehicle/${editVehicle.id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedVehicle),
       })
-        .then(response => response.json())
-        .then(data => {
-          const updatedVehicles = vehicles.map(vehicle => {
+        .then((response) => response.json())
+        .then((data) => {
+          const updatedVehicles = vehicles.map((vehicle) => {
             if (vehicle.id === data.id) {
               return data;
             }
@@ -69,8 +69,8 @@ export const HomePage = () => {
           setVehicles(updatedVehicles);
           setEditVehicle(null);
         })
-        .catch(error => {
-          console.error('Error updating vehicle:', error);
+        .catch((error) => {
+          console.error("Error updating vehicle:", error);
         });
     }
   };
@@ -81,14 +81,16 @@ export const HomePage = () => {
 
   const handleDelete = (vehicleId) => {
     fetch(`http://localhost:8080/vehicle/${vehicleId}`, {
-      method: 'DELETE',
+      method: "DELETE",
     })
       .then(() => {
-        const updatedVehicles = vehicles.filter(vehicle => vehicle.id !== vehicleId);
+        const updatedVehicles = vehicles.filter(
+          (vehicle) => vehicle.id !== vehicleId
+        );
         setVehicles(updatedVehicles);
       })
-      .catch(error => {
-        console.error('Error deleting vehicle:', error);
+      .catch((error) => {
+        console.error("Error deleting vehicle:", error);
       });
   };
 
@@ -97,11 +99,11 @@ export const HomePage = () => {
       <div className="container">
         <h4>Scenario</h4>
         <select>
-              {scenarios.map(scenario => (
-                <option key={scenario.id} value={scenario.id}>
-                  {scenario.name}
-                </option>
-              ))}
+          {scenarios.map((scenario) => (
+            <option key={scenario.id} value={scenario.id}>
+              {scenario.name}
+            </option>
+          ))}
         </select>
         <table className="rounded-table">
           <thead>
@@ -117,7 +119,7 @@ export const HomePage = () => {
             </tr>
           </thead>
           <tbody>
-            {vehicles.map(vehicle => (
+            {vehicles.map((vehicle) => (
               <tr key={vehicle.id}>
                 <td>{vehicle.id}</td>
                 <td>{vehicle.vehicleName}</td>
@@ -126,10 +128,10 @@ export const HomePage = () => {
                 <td>{vehicle.speed}</td>
                 <td>{vehicle.direction}</td>
                 <td>
-                   <MdEdit
-                      fontSize={"25px"}
-                      onClick={() => handleEdit(vehicle)}
-                    />
+                  <MdEdit
+                    fontSize={"25px"}
+                    onClick={() => handleEdit(vehicle)}
+                  />
                 </td>
                 <td>
                   <RiDeleteBin5Fill
@@ -149,19 +151,19 @@ export const HomePage = () => {
           <input
             type="text"
             value={editName}
-            onChange={e => setEditName(e.target.value)}
+            onChange={(e) => setEditName(e.target.value)}
           />
           <h3>Position X</h3>
           <input
             type="number"
             value={editPositionX}
-            onChange={e => setEditPositionX(Number(e.target.value))}
+            onChange={(e) => setEditPositionX(Number(e.target.value))}
           />
           <h3>Position Y</h3>
           <input
             type="number"
             value={editPositionY}
-            onChange={e => setEditPositionY(Number(e.target.value))}
+            onChange={(e) => setEditPositionY(Number(e.target.value))}
           />
           <br />
           <br />
@@ -169,11 +171,9 @@ export const HomePage = () => {
           <button onClick={handleCancel}>Cancel</button>
         </div>
       )}
-      <div id='simulationdiv'>
-
-      <Simulation />
+      <div id="simulationdiv">
+        <Simulation />
       </div>
     </div>
-    
   );
 };
