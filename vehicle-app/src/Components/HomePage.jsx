@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MdEdit } from "react-icons/md";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import '../Styles/home.css';
+import Simulation from './Simulation';
 
 export const HomePage = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -9,6 +10,18 @@ export const HomePage = () => {
   const [editName, setEditName] = useState('');
   const [editPositionX, setEditPositionX] = useState(0);
   const [editPositionY, setEditPositionY] = useState(0);
+  const [scenarios, setScenarios] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/scenarios')
+      .then(response => response.json())
+      .then(data => {
+        setScenarios(data);
+      })
+      .catch(error => {
+        console.error('Error fetching scenarios:', error);
+      });
+  }, []);
 
   useEffect(() => {
     fetch('http://localhost:8080/vehicle')
@@ -83,10 +96,12 @@ export const HomePage = () => {
     <div>
       <div className="container">
         <h4>Scenario</h4>
-        <select name="" id="">
-          <option value="">option1</option>
-          <option value="">option1</option>
-          <option value="">option1</option>
+        <select>
+              {scenarios.map(scenario => (
+                <option key={scenario.id} value={scenario.id}>
+                  {scenario.name}
+                </option>
+              ))}
         </select>
         <table className="rounded-table">
           <thead>
@@ -154,6 +169,10 @@ export const HomePage = () => {
           <button onClick={handleCancel}>Cancel</button>
         </div>
       )}
+      <div id='simulationdiv'>
+
+      <Simulation />
+      </div>
     </div>
     
   );

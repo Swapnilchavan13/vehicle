@@ -29,20 +29,28 @@
       "id": 1
     },
     {
-      "vehicleName": "goal",
-      "speed": "7",
-      "positionX": "600",
-      "positionY": "56",
-      "direction": "Backward",
-      "id": 2
-    },
-    {
       "vehicleName": "target",
       "speed": "9",
       "positionX": "680",
       "positionY": "54",
       "direction": "Downward",
       "id": 3
+    },
+    {
+      "vehicleName": "main",
+      "speed": "3",
+      "positionX": "499",
+      "positionY": "67",
+      "direction": "Toward",
+      "id": 4
+    },
+    {
+      "vehicleName": "naon",
+      "speed": "1",
+      "positionX": "0",
+      "positionY": "100",
+      "direction": "Backward",
+      "id": 5
     }
   ]
 }
