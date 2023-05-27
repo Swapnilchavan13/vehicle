@@ -1,0 +1,13 @@
+#sbuttons{
+    text-align: right;
+    padding: 20px 0px;
+    margin-top: -50px;
+}
+#sbuttons :nth-child(1) {
+background-color: green;
+margin-right: 30px;
+}
+#sbuttons :nth-child(2) {
+    background-color: rgb(70, 154, 187);
+    
+    }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "../Styles/simulation.css";
 
 const Container = {
   backgroundColor: 'black',
@@ -30,7 +31,7 @@ const Simulation = () => {
   const [simulationRunning, setSimulationRunning] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:8080/vehicle') // Replace with your API endpoint
+    fetch('http://localhost:8080/vehicle')
       .then(response => response.json())
       .then(data => {
         const formattedVehicles = data.map(vehicle => ({
@@ -79,7 +80,6 @@ const Simulation = () => {
                 break;
             }
 
-            // Check if the vehicle is outside the container
             if (x > containerWidth || y > containerHeight || x < 0 || y < 0) {
               vehicle.hidden = true;
             }
@@ -91,7 +91,7 @@ const Simulation = () => {
         });
       };
 
-      const interval = setInterval(updateVehicles, 16); // Update vehicles every 16 milliseconds (approximately 60fps)
+      const interval = setInterval(updateVehicles, 16);
 
       return () => clearInterval(interval);
     }
@@ -99,7 +99,7 @@ const Simulation = () => {
 
   return (
     <div>
-         <div>
+         <div id='sbuttons'>
         <button onClick={startSimulation}>Start Simulation</button>
         <button onClick={stopSimulation}>Stop Simulation</button>
       </div>

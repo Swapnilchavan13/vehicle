@@ -118,10 +118,13 @@ export const AddVehicle = () => {
             <h4>Position Y</h4>
             <input
               type="number"
-              placeholder='20'
+              className='required-field'
+              placeholder='0-280'
               value={positionY}
               onChange={e => setPositionY(e.target.value)}
             />
+            <p className='popup'>Y Position should not be {'>'} 280 and {'<'} 0</p>
+
           </div>
           <div className="input-container">
             <h4>Direction</h4>
