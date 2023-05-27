@@ -16,7 +16,7 @@ The application displays a graph with vehicles moving in different directions ba
 ## Getting Started
 To run the simulation application locally, follow these steps:
 
-1. Clone the repository: ``
+1. Clone the repository: `https://github.com/Swapnilchavan13/vehicle.git`
 2. Navigate to the project directory: `cd vehicle-app`
 3. Install the dependencies: `npm install`
 4. Start the development server: `npm start`
