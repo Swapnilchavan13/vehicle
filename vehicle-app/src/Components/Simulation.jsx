@@ -96,7 +96,7 @@ const Simulation = () => {
     }
   };
 
-  return (
+   return (
     <div>
       <div id="sbuttons">
         <button onClick={startSimulation}>Start Simulation</button>

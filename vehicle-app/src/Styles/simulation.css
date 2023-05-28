@@ -1,22 +1,21 @@
 #container {
-    background-color: black;
-    width: 962px;
+    width: 938px;
     height: 302px;
-    border: 1px solid black;
     position: relative;
+    border: 2px solid green;
     overflow: hidden;
-    background-size: 68.5px 50px;
+    background-size: 66.9px 50px;
     background-image: linear-gradient(to right, green 1px, transparent 1px),
-        linear-gradient(to bottom, green 1px, transparent 1px);
-}
-
-.vehicle {
+      linear-gradient(to bottom, green 1px, transparent 1px);
+  }
+  
+  .vehicle {
     width: 20px;
     height: 20px;
     border-radius: 50%;
     text-align: center;
     position: absolute;
-}
+  }
 
 
 #sbuttons {
