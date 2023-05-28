@@ -12,6 +12,7 @@ The application displays a graph with vehicles moving in different directions ba
 - React.js: A JavaScript library for building user interfaces.
 - CSS: Custom CSS styles have been applied to create the simulation graph.
 - Fetch API: Used to retrieve vehicle data from the provided API.
+- JSON Server: Simple JSON-based database server for testing purposes.
 
 ## Getting Started
 To run the simulation application locally, follow these steps:
