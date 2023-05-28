@@ -1,12 +1,14 @@
 # Simulation Application - Technical Challenge
 
 ## Description
-The application displays a graph with vehicles moving in different directions based on the provided data.
+The React Scenario Simulation App is a web application built using React.js that allows users to create, display, update, and delete scenarios and vehicles. A scenario can have multiple vehicles, and the vehicles can be moved within a graph container based on the specified parameters.
 
 ## Features
-- Fetches vehicle data from an API and displays it on the graph.
-- Allows starting and stopping the simulation of vehicle movement.
-- Provides a reset functionality to restore the initial state of the simulation.
+- Create, display, update, and delete scenarios.
+- Create, display, update, and delete vehicles within a scenario.
+- Perform simulations by moving vehicles based on their direction and speed.
+- Hide vehicles that go outside the graph container during the simulation.
+- Validate vehicle positions to ensure they do not exceed the container size.
 
 ## Technologies Used
 - React.js: A JavaScript library for building user interfaces.
