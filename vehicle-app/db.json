@@ -13,44 +13,20 @@
       "id": 2
     },
     {
-      "name": "Third",
-      "time": "9",
-      "vehicles": 2,
-      "id": 3
+      "name": "Swapnil",
+      "time": "5",
+      "vehicles": 6,
+      "id": 4
     }
   ],
   "vehicle": [
     {
-      "vehicleName": "my name",
+      "vehicleName": "old",
       "speed": "1",
-      "positionX": 400,
-      "positionY": 200,
-      "direction": "Toward",
+      "positionX": "600",
+      "positionY": "100",
+      "direction": "Upward",
       "id": 1
-    },
-    {
-      "vehicleName": "anither",
-      "speed": "1",
-      "positionX": 500,
-      "positionY": "150",
-      "direction": "Backward",
-      "id": 2
-    },
-    {
-      "vehicleName": "polo",
-      "speed": "2",
-      "positionX": 600,
-      "positionY": 200,
-      "direction": "Upward",
-      "id": 3
-    },
-    {
-      "vehicleName": "momo",
-      "speed": "3",
-      "positionX": 300,
-      "positionY": 20,
-      "direction": "Upward",
-      "id": 4
     }
   ]
 }
